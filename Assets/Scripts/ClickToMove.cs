@@ -14,13 +14,13 @@ public class ClickToMove : MonoBehaviour {
 
 	void Update() {
         if (Input.GetMouseButton(0)) {
-			locatePosition();
+			LocatePosition();
         }
-        moveTo();
+        MoveTo();
 	}
 
 	//locates and sets the new position this character will travel to.
-    void locatePosition() {
+    void LocatePosition() {
 		RaycastHit hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if(Physics.Raycast(ray, out hit, 1000)) {
@@ -30,7 +30,7 @@ public class ClickToMove : MonoBehaviour {
     }
 
 	//moves this characters towards its new position.
-    void moveTo() {
+    void MoveTo() {
         if (Vector3.Distance(transform.position, moveToPosition) > 0.8) {
             Quaternion newRotation = Quaternion.LookRotation(moveToPosition - transform.position);
 
